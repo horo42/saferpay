@@ -4,7 +4,8 @@ namespace Horo42\Saferpay\Data;
 
 interface PayInitParameterInterface
 {
-    const REQUEST_URL = 'https://www.saferpay.com/hosting/CreatePayInit.asp';
+    // const REQUEST_URL = 'https://www.saferpay.com/hosting/CreatePayInit.asp';
+    const REQUEST_URL = 'https://www.saferpay.com/api';
 
     /**
      * The Saferpay account number for this merchant Transaction.

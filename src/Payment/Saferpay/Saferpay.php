@@ -78,7 +78,8 @@ class Saferpay
      */
     public function createPayInit(CollectionItemInterface $payInitParameter)
     {
-        return $this->request($payInitParameter->getRequestUrl(), $payInitParameter->getData());
+        return $this->request($payInitParameter->getRequestUrl() . '/Payment/v1/PaymentPage/Initialize',
+            $payInitParameter->getData());
     }
 
     /**
@@ -95,7 +96,7 @@ class Saferpay
 
         $this->fillDataFromXML($payConfirmParameter, $xml);
         $this->request($payConfirmParameter->getRequestUrl(), array(
-            'DATA' => $xml,
+            'DATA'      => $xml,
             'SIGNATURE' => $signature
         ));
 
@@ -103,11 +104,11 @@ class Saferpay
     }
 
     /**
-     * @param  CollectionItemInterface            $payConfirmParameter
-     * @param  string                             $action
-     * @param  null                               $spPassword
-     * @param  CollectionItemInterface            $payCompleteParameter
-     * @param  CollectionItemInterface            $payCompleteResponse
+     * @param  CollectionItemInterface $payConfirmParameter
+     * @param  string $action
+     * @param  null $spPassword
+     * @param  CollectionItemInterface $payCompleteParameter
+     * @param  CollectionItemInterface $payCompleteResponse
      * @return CollectionItemInterface
      * @throws Exception\NoPasswordGivenException
      * @throws \Exception
@@ -136,7 +137,8 @@ class Saferpay
         $payCompleteParameterData = $payCompleteParameter->getData();
 
         if ($this->isTestAccountId($payCompleteParameter->get('ACCOUNTID'))) {
-            $payCompleteParameterData = array_merge($payCompleteParameterData, array('spPassword' => PayInitParameterInterface::SAFERPAYTESTACCOUNT_SPPASSWORD));
+            $payCompleteParameterData = array_merge($payCompleteParameterData,
+                array('spPassword' => PayInitParameterInterface::SAFERPAYTESTACCOUNT_SPPASSWORD));
         } elseif ($action != PayCompleteParameterInterface::ACTION_SETTLEMENT && !$spPassword) {
             throw new NoPasswordGivenException();
         }
@@ -154,33 +156,59 @@ class Saferpay
 
     /**
      * @param $url
-     * @param  array      $data
+     * @param  array $data
      * @return mixed
      * @throws \Exception
      */
     protected function request($url, array $data)
     {
-        $data = http_build_query($data);
-
         $this->getLogger()->debug($url);
         $this->getLogger()->debug($data);
+
+        $data = [
+            "RequestHeader" => [
+                "SpecVersion"    => "1.7",
+                "CustomerId"     => "customer-id",
+                "RequestId"      => "1",
+                "RetryIndicator" => 0
+            ],
+            "TerminalId"    => "terminal-id",
+            "Payment"       => [
+                "Amount"      => [
+                    "Value"        => $data['AMOUNT'],
+                    "CurrencyCode" => $data['CURRENCY']
+                ],
+                "OrderId"     => "1",
+                "Description" => $data['DESCRIPTION']
+            ],
+            "ReturnUrls"    => [
+                "Success" => $data['SUCCESSLINK'],
+                "Fail"    => $data['FAILLINK']
+            ]
+        ];
 
         $response = $this->getHttpClient()->request(
             'POST',
             $url,
-            $data,
-            array('Content-Type' => 'application/x-www-form-urlencoded')
+            json_encode($data),
+            array(
+                'Content-Type'  => 'application/json; charset=utf-8',
+                'Accept'        => 'application/json',
+                'Authorization' => 'Basic hash',
+            )
         );
 
         $this->getLogger()->debug($response->getContent());
 
         if ($response->getStatusCode() != 200) {
-            $this->getLogger()->critical('Saferpay: request failed with statuscode: {statuscode}!', array('statuscode' => $response->getStatusCode()));
+            $this->getLogger()->critical('Saferpay: request failed with statuscode: {statuscode}!',
+                array('statuscode' => $response->getStatusCode()));
             throw new \Exception('Saferpay: request failed with statuscode: ' . $response->getStatusCode() . '!');
         }
 
         if (strpos($response->getContent(), 'ERROR') !== false) {
-            $this->getLogger()->critical('Saferpay: request failed: {content}!', array('content' => $response->getContent()));
+            $this->getLogger()->critical('Saferpay: request failed: {content}!',
+                array('content' => $response->getContent()));
             throw new \Exception('Saferpay: request failed: ' . $response->getContent() . '!');
         }
 
