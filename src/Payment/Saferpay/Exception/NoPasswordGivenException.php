@@ -1,6 +1,6 @@
 <?php
 
-namespace Payment\Saferpay\Exception;
+namespace Horo42\Saferpay\Exception;
 
 class NoPasswordGivenException extends \Exception
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Payment\Saferpay\Data\Billpay;
+namespace Horo42\Saferpay\Data\Billpay;
 
-use Payment\Saferpay\Data\Collection\Collection;
+use Horo42\Saferpay\Data\Collection\Collection;
 
 class BillpayPayCompleteResponseTest extends \PHPUnit_Framework_TestCase
 {

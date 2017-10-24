@@ -1,6 +1,6 @@
 <?php
 
-namespace Payment\Saferpay\Data\Collection;
+namespace Horo42\Saferpay\Data\Collection;
 
 interface CollectionItemInterface
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Payment\Saferpay\Data\Billpay;
+namespace Horo42\Saferpay\Data\Billpay;
 
-use Payment\Saferpay\Data\Collection\Collection;
-use Payment\Saferpay\Data\PayInitParameterInterface;
+use Horo42\Saferpay\Data\Collection\Collection;
+use Horo42\Saferpay\Data\PayInitParameterInterface;
 
 class BillpayPayInitParameterTest extends \PHPUnit_Framework_TestCase
 {

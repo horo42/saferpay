@@ -1,6 +1,6 @@
 <?php
 
-namespace Payment\Saferpay;
+namespace Horo42\Saferpay;
 
 class SaferpayConditionConverter
 {

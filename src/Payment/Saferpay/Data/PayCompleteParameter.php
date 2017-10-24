@@ -1,8 +1,8 @@
 <?php
 
-namespace Payment\Saferpay\Data;
+namespace Horo42\Saferpay\Data;
 
-use Payment\Saferpay\Data\Collection\AbstractCollectionItem;
+use Horo42\Saferpay\Data\Collection\AbstractCollectionItem;
 
 class PayCompleteParameter extends AbstractCollectionItem implements PayCompleteParameterInterface
 {

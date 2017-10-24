@@ -1,6 +1,6 @@
 <?php
 
-namespace Payment\Saferpay\Data\Collection;
+namespace Horo42\Saferpay\Data\Collection;
 
 /**
  * ATTENTION: each collection item can override the fieldsnames and/or the request url

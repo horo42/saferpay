@@ -1,6 +1,6 @@
 <?php
 
-namespace Payment\Saferpay\Data\Billpay;
+namespace Horo42\Saferpay\Data\Billpay;
 
 interface BillpayPayCompleteParameterInterface
 {

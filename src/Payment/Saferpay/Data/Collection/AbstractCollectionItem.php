@@ -1,8 +1,8 @@
 <?php
 
-namespace Payment\Saferpay\Data\Collection;
+namespace Horo42\Saferpay\Data\Collection;
 
-use Payment\Saferpay\SaferpayConditionConverter;
+use Horo42\Saferpay\SaferpayConditionConverter;
 
 abstract class AbstractCollectionItem implements CollectionItemInterface
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Payment\Saferpay\Data\Billpay;
+namespace Horo42\Saferpay\Data\Billpay;
 
-use Payment\Saferpay\Data\Collection\AbstractCollectionItem;
+use Horo42\Saferpay\Data\Collection\AbstractCollectionItem;
 
 class BillpayPayCompleteParameter extends AbstractCollectionItem implements BillpayPayCompleteParameterInterface
 {

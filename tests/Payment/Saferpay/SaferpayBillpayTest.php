@@ -1,13 +1,13 @@
 <?php
 
-namespace Payment\Saferpay;
+namespace Horo42\Saferpay;
 
 use Payment\HttpClient\BuzzClient;
-use Payment\Saferpay\Data\Billpay\BillpayPayInitParameter;
-use Payment\Saferpay\Data\Billpay\BillpayPayInitParameterInterface;
-use Payment\Saferpay\Data\Collection\Collection;
-use Payment\Saferpay\Data\PayInitParameter;
-use Payment\Saferpay\Data\PayInitParameterInterface;
+use Horo42\Saferpay\Data\Billpay\BillpayPayInitParameter;
+use Horo42\Saferpay\Data\Billpay\BillpayPayInitParameterInterface;
+use Horo42\Saferpay\Data\Collection\Collection;
+use Horo42\Saferpay\Data\PayInitParameter;
+use Horo42\Saferpay\Data\PayInitParameterInterface;
 
 class SaferpayBillpayTest extends \PHPUnit_Framework_TestCase
 {

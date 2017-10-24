@@ -1,11 +1,11 @@
 <?php
 
-namespace Payment\Saferpay;
+namespace Horo42\Saferpay;
 
 use Payment\HttpClient\BuzzClient;
-use Payment\Saferpay\Data\PayCompleteResponse;
-use Payment\Saferpay\Data\PayConfirmParameter;
-use Payment\Saferpay\Data\PayInitParameter;
+use Horo42\Saferpay\Data\PayCompleteResponse;
+use Horo42\Saferpay\Data\PayConfirmParameter;
+use Horo42\Saferpay\Data\PayInitParameter;
 
 class SaferpayTest extends \PHPUnit_Framework_TestCase
 {

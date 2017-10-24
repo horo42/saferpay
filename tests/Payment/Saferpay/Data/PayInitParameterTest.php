@@ -1,8 +1,8 @@
 <?php
 
-namespace Payment\Saferpay\Data;
+namespace Horo42\Saferpay\Data;
 
-use Payment\Saferpay\Data\Collection\Collection;
+use Horo42\Saferpay\Data\Collection\Collection;
 
 class PayInitParameterTest extends \PHPUnit_Framework_TestCase
 {

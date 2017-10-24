@@ -1,6 +1,6 @@
 <?php
 
-namespace Payment\Saferpay\Data;
+namespace Horo42\Saferpay\Data;
 
 interface PayCompleteResponseInterface
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Payment\Saferpay;
+namespace Horo42\Saferpay;
 
 use Payment\HttpClient\HttpClientInterface;
-use Payment\Saferpay\Data\Collection\CollectionItemInterface;
-use Payment\Saferpay\Data\PayCompleteParameter;
-use Payment\Saferpay\Data\PayCompleteParameterInterface;
-use Payment\Saferpay\Data\PayCompleteResponse;
-use Payment\Saferpay\Data\PayConfirmParameter;
-use Payment\Saferpay\Data\PayInitParameterInterface;
-use Payment\Saferpay\Exception\NoPasswordGivenException;
+use Horo42\Saferpay\Data\Collection\CollectionItemInterface;
+use Horo42\Saferpay\Data\PayCompleteParameter;
+use Horo42\Saferpay\Data\PayCompleteParameterInterface;
+use Horo42\Saferpay\Data\PayCompleteResponse;
+use Horo42\Saferpay\Data\PayConfirmParameter;
+use Horo42\Saferpay\Data\PayInitParameterInterface;
+use Horo42\Saferpay\Exception\NoPasswordGivenException;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
