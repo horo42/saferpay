@@ -1,5 +1,5 @@
 {
-    "name": "payment/saferpay",
+    "name": "horo42/saferpay",
     "type": "library",
     "description": "Saferpay payment service library",
     "keywords": ["saferpay", "payment", "e-commerce"],
